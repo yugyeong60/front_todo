@@ -23,6 +23,7 @@ body {
 .start {
   display: flex;
   align-items: center;
+  margin: 0px auto;
   padding: 150px 150px 0 150px;
 }
 
@@ -42,10 +43,10 @@ body {
 
 figure {
   width: 100%;
-  height: calc(100vh - 120px); /*전체 브라우저 높이에서 120px만큼 빼줌*/
-  background: #ffffff;
+  height: calc(100vh - 400px); /*전체 브라우저 높이에서 120px만큼 빼줌*/
   position: relative;
   overflow: hidden;
+  background: #ececec;
   padding-top: 10px;
 }
 
@@ -71,7 +72,7 @@ figure .inner h4 {
   font: 16px/1.4 "arial";
   color: #848484;
   margin-bottom: 10px;
-  margin-left: 40px;
+  margin-left: 100px;
   line-height: 1.6;
   font-weight: bold;
 }
@@ -112,13 +113,13 @@ figure .inner p {
 figure .inner a {
   display: block;
   width: 400px;
-  height: 30px;
+  height: 20px;
   border: 1px solid #bbb;
-  font: bold 11px/30px "arial";
-  color: #fff;
+  font: bold 11px/20px "arial";
+  color: #ececec;
   text-align: center;
   letter-spacing: 1px;
-  margin-left: 40px;
+  margin-left: 100px;
   transition: all 0.5s;
 }
 
@@ -127,8 +128,18 @@ figure .inner a:hover {
   color: #555;
 }
 
+h1 {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 30px;
+  color: #454545;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
 .container {
-  width: 100%;
+  width: 90%;
   margin: 20px auto;
   padding: 0px 20px 20px 20px;
   background: #fafafa;
@@ -138,11 +149,26 @@ figure .inner a:hover {
 .container h1 {
   text-align: center;
   margin-bottom: 10px;
-  padding: 10px;
+  font-size: 30px;
+  color: #454545;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.input-container {
+  display: flex;
+  gap: 10px; /* 두 입력 필드 사이의 간격 */
 }
 
 .todo-input {
-  width: 100%;
+  width: 80%;
+  font-size: 15px;
+  margin-bottom: 20px;
+  padding: 5px;
+}
+
+.author-input {
+  width: 20%;
   font-size: 15px;
   margin-bottom: 20px;
   padding: 5px;
@@ -150,20 +176,32 @@ figure .inner a:hover {
 
 .todos-container {
   display: flex; /* Flexbox를 사용하여 가로 배치 설정 */
-  flex-wrap: wrap; /* 요소들이 넘치는 경우 여러 줄에 걸쳐 배치 */
+  flex-direction: column; /* 수직 배치 설정 */
   gap: 10px; /* 요소 사이의 간격 */
 }
 
 .todo-item {
+  display: flex;
+  justify-content: space-between; /* 공간을 양쪽으로 나눔 */
+  align-items: center; /* 수직 가운데 정렬 */
   background-color: #ffffff;
   padding: 5px;
   margin-bottom: 10px;
-  font-size: 15px;
+  font-size: 14px;
   width: calc(100% - 7px); /*없으면 text size 만큼만 width가 늘어남 */
   position: relative; /* 자식 요소를 absolute 로 배치 */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   word-wrap: break-word; /* 긴 단어가 있을 때 줄바꿈 처리 */
   transition: all 0.5s;
+}
+
+.todo-content {
+  flex: 1;
+}
+
+.todo-timestamp {
+  flex-shrink: 0; /* 시간 요소가 줄어들지 않도록 함 */
+  margin-right: 30px; /* 왼쪽에 여유 공간 추가 */
 }
 
 .todo-item:hover {
@@ -173,11 +211,11 @@ figure .inner a:hover {
 .delete-btn {
   display: none; /* 초기에는 숨겨짐 */
   position: absolute;
-  top: 2px;
+  top: 4.5px;
   right: 5px;
   background-color: #000000;
-  color: white;
   border: none; /* 테두리 없애기 */
+  color: white;
   padding: 5px 10px;
   border-radius: 50%;
   font-size: 10px;

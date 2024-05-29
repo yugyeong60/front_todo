@@ -18,7 +18,12 @@ function renderTodos(todos) {
     todos.forEach(todo => {
         const todoDiv = document.createElement('div');
         todoDiv.classList.add('todo-item');
-        todoDiv.textContent = todo.item;
+        todoDiv.innerHTML = ` <div class="todo-content">
+        <strong>${todo.author}</strong>: ${todo.item}
+    </div>
+    <div class="todo-timestamp">
+        <small>${new Date(todo.timestamp).toLocaleString()}</small>
+    </div>`;
         todosContainer.appendChild(todoDiv);
         // 삭제 버튼 생성 및 이벤트 처리
         const deleteBtn = document.createElement('button');
@@ -37,6 +42,7 @@ window.addEventListener('DOMContentLoaded', function () {
     getTodos();
 });
 
+const authorInput = document.querySelector('.author-input');
 const todoInput = document.querySelector('.todo-input');
 
 todoInput.addEventListener('keypress', function (event) {
@@ -46,14 +52,19 @@ todoInput.addEventListener('keypress', function (event) {
 });
 
 function addTodo() {
+    const author = authorInput.value.trim();
     const title = todoInput.value.trim();
+    if (author === '' || title === '') return;
     let todoData = {
         id: 0,
-        item: title
+        item: title,
+        author: author,
+        timestamp: new Date().toISOString()
     };
-    if (title === '') return;
+    console.log("Adding todo:", todoData);
     axios.post(`${host}/todo`, todoData)
         .then(response => {
+            authorInput.value = '';
             todoInput.value = '';
             getTodos();
         })
