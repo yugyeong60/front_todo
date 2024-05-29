@@ -69,3 +69,11 @@ function deleteTodo(id) {
         console.error('Error deleting todo:', error);
     });
 }
+
+document.querySelector('.shortcut-button1').addEventListener('click', function () {
+    window.location.href = 'https://www.kw.ac.kr/ko/univ/depart_intro.jsp?hpage=college_004_01';
+});
+
+document.querySelector('.shortcut-button2').addEventListener('click', function () {
+    window.location.href = 'https://ic.kw.ac.kr/main/main.php';
+});

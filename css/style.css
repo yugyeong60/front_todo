@@ -6,20 +6,133 @@
   box-sizing: border-box;
 }
 
+/* header */
+header {
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+}
+
 body {
   font-family: Arial;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: rgb(201, 216, 245);
+  background-color: rgb(245, 245, 245);
+}
+
+.start {
+  display: flex;
+  align-items: center;
+  padding: 150px 150px 0 150px;
+}
+
+.profile-photo {
+  width: 120px;
+  height: 180px;
+  margin-left: 50px;
+  margin-right: 20px;
+}
+
+.start p {
+  font-size: 30px;
+  color: #454545;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+figure {
+  width: 100%;
+  height: calc(100vh - 120px); /*전체 브라우저 높이에서 120px만큼 빼줌*/
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+  padding-top: 10px;
+}
+
+figure .inner {
+  width: 1180px;
+  margin: 0px auto;
+  position: relative;
+}
+
+figure .inner h5 {
+  font: "arial";
+  color: #848484;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+figure .inner .side-by-side {
+  display: flex; /* Flexbox 사용 */
+}
+
+figure .inner h4 {
+  font: 16px/1.4 "arial";
+  color: #848484;
+  margin-bottom: 10px;
+  margin-left: 40px;
+  line-height: 1.6;
+  font-weight: bold;
+}
+
+figure .inner h6 {
+  font: 14px/1.4 "arial";
+  margin-top: 24px;
+  margin-left: 20px;
+  line-height: 1.6;
+}
+
+.shortcut-button1,
+.shortcut-button2 {
+  padding: 0.5px 20px;
+  font-size: 14px;
+  background-color: #808a80;
+  color: #fff;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.shortcut-button1:hover,
+.shortcut-button2:hover {
+  background-color: #465146;
+}
+
+figure .inner p {
+  font: 16px/1.4 "arial";
+  color: #1b1b1b;
+  margin-bottom: 10px;
+  margin-left: 40px;
+  line-height: 1.6;
+  font-weight: bold;
+}
+
+figure .inner a {
+  display: block;
+  width: 400px;
+  height: 30px;
+  border: 1px solid #bbb;
+  font: bold 11px/30px "arial";
+  color: #fff;
+  text-align: center;
+  letter-spacing: 1px;
+  margin-left: 40px;
+  transition: all 0.5s;
+}
+
+figure .inner a:hover {
+  background: #fff;
+  color: #555;
 }
 
 .container {
-  width: 50vw;
+  width: 100%;
   margin: 20px auto;
   padding: 0px 20px 20px 20px;
-  background: #ddd;
-  box-shadow: 0 0 30px rgba(67, 79, 250, 0.5);
+  background: #fafafa;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
 }
 
 .container h1 {
@@ -30,7 +143,7 @@ body {
 
 .todo-input {
   width: 100%;
-  font-size: 20px;
+  font-size: 15px;
   margin-bottom: 20px;
   padding: 5px;
 }
@@ -42,15 +155,15 @@ body {
 }
 
 .todo-item {
-  background-color: #e0de38;
+  background-color: #ffffff;
   padding: 5px;
   margin-bottom: 10px;
   font-size: 15px;
-  height: 70px;
-  width: calc(33.33% - 7px); /*없으면 text size 만큼만 width가 늘어남 */
+  width: calc(100% - 7px); /*없으면 text size 만큼만 width가 늘어남 */
   position: relative; /* 자식 요소를 absolute 로 배치 */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   word-wrap: break-word; /* 긴 단어가 있을 때 줄바꿈 처리 */
+  transition: all 0.5s;
 }
 
 .todo-item:hover {
@@ -58,19 +171,73 @@ body {
 }
 
 .delete-btn {
-  display: none;
+  display: none; /* 초기에는 숨겨짐 */
   position: absolute;
   top: 2px;
   right: 5px;
-  background-color: #ff4d4d;
+  background-color: #000000;
   color: white;
   border: none; /* 테두리 없애기 */
   padding: 5px 10px;
   border-radius: 50%;
   font-size: 10px;
-  cursor: pointer;
+  cursor: pointer; /* 마우스 커서를 손가락 모양으로 변경 */
 }
 
 .todo-item:hover .delete-btn {
+  display: block; /* 마우스를 올리면 삭제 버튼이 나타남 */
+}
+
+/* footer */
+footer {
+  width: 100%;
+  background: #333;
+  padding: 100px 0px;
+  border-top: 1px solid #888;
+}
+footer .inner {
+  width: 1180px;
+  margin: 0px auto;
+}
+footer .inner .upper {
+  width: 100%;
+  border-bottom: 1px solid #777;
+  padding-bottom: 20px;
+}
+footer .inner .upper::after {
+  /*상단 영역 float해제*/
+  content: "";
   display: block;
+  clear: both;
+}
+footer .inner .upper h1 {
+  float: left;
+  font: bold 24px/1 "arial";
+  color: #666;
+}
+footer .inner .upper ul {
+  float: right;
+}
+footer .inner .upper ul li {
+  float: left;
+  margin-left: 20px;
+}
+footer .inner .upper ul li a {
+  font: bold 14px/1 "arial";
+  color: #666;
+}
+footer .inner .lower {
+  width: 100%;
+  padding-top: 20px;
+}
+footer .inner .lower address {
+  width: 100%;
+  font: 12px/1.3 "arial";
+  color: #777;
+  margin-bottom: 20px;
+}
+footer .inner .lower p {
+  width: 100%;
+  font: 12px/1 "arial";
+  color: #777;
 }
